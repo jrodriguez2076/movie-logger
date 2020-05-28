@@ -1,0 +1,74 @@
+.example-card {
+  max-width: 80%;
+  margin: 1rem;
+  position: relative;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+.card-slot {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-title {
+  // position: absolute;
+  // left: 50%;
+  // top: 50%;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: darken($color: #000000, $amount: 20);
+}
+
+img {
+  height: 100%; //so that it takes up full space
+  max-height: 256px !important; // this prevents the image from being extremely big
+  object-fit: cover;
+  object-position: center; /* this centers and crops the image so that it doesn't break the aspect ratio */
+  min-width: 128px;
+  min-height: 128px;
+  width: 100%;
+  height: auto;
+
+}
+
+.darken {
+  display: inline-block;
+  background: black;
+  padding: 0;
+  position: relative;
+}
+
+.darken img {
+  display: block;
+
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+
+.darken:hover img {
+  opacity: 0.6;
+}
+.darken p {
+  position: absolute;
+  top: 50%;
+  opacity: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.darken:hover p {
+  color: #fff;
+  opacity: 100%;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}

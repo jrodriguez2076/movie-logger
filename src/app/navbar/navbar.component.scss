@@ -1,0 +1,44 @@
+mat-toolbar {
+    font-size: small;
+    z-index: 4;
+    position: relative;
+}
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+.nav-link {
+    margin: 0 1.5rem;
+}
+
+.mat-elevation-z4 {
+    position: relative;
+    z-index: 4;
+ }
+
+.app-title {
+    margin: 0 1.5rem 0 0;
+}
+
+.mat-toolbar {
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.logo-img {
+    max-width: 45%;
+    // max-height: 120%;
+    // position: absolute;
+    // top: 0%;
+}
+
+.logo-img-wrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
