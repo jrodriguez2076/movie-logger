@@ -10,14 +10,18 @@ import { ContentComponent } from './content/content.component';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatInputModule} from '@angular/material/input';
 import { MovieCardComponent } from './movie-card/movie-card.component'; 
-import {MatCardModule} from '@angular/material/card'; 
+import {MatCardModule} from '@angular/material/card';
+import { TvShowsComponent } from './tv-shows/tv-shows.component';
+import { MoviesComponent } from './movies/movies.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ContentComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    TvShowsComponent,
+    MoviesComponent
   ],
   imports: [
     BrowserModule,

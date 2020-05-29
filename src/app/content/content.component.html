@@ -1,35 +1,5 @@
-<header class="component-page-header">
-    <h1 class="content-title mat-display-2">Your Movie Journal</h1>
-</header>
+
 <div class="content-section">
-    <div class="search-bar">
-        <mat-form-field appearance="fill" style="width: 80%;">
-            <mat-label>Search for a movie or Tv show</mat-label>
-            <input matInput>
-        </mat-form-field>
-    </div>
-    <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Recommended Movies</h3>
-    <div class="movie-card">
-        <div *ngFor="let image of imageList">
-            <app-movie-card [imageUrl]="image"></app-movie-card>
-        </div>
-    </div>
-    <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Recently Watched</h3>
-    <div class="movie-card">
-        <div *ngFor="let image of imageList">
-            <app-movie-card [imageUrl]="image"></app-movie-card>
-        </div>
-    </div>
-    <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Upcoming Movies</h3>
-    <div class="movie-card">
-        <div *ngFor="let image of imageList">
-            <app-movie-card [imageUrl]="image"></app-movie-card>
-        </div>
-    </div>
-    <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Upcoming YIFY Movies</h3>
-    <div class="movie-card">
-        <div *ngFor="let image of imageList">
-            <app-movie-card [imageUrl]="image"></app-movie-card>
-        </div>
-    </div>
+    <!-- <app-movies></app-movies> -->
+    <app-tv-shows></app-tv-shows>
 </div>
