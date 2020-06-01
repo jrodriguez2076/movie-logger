@@ -1,0 +1,31 @@
+// .search-bar {
+//     display: flex;
+//     justify-content: center;
+//     margin: 2rem 0 0 0;
+// }
+
+.movie-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    width: 70%;
+}
+
+.component-page-header {
+    background: #7b1fa2;
+    font-size: larger;
+    padding: 1.3rem 0;
+}
+
+.content-title {
+    font-weight: 200;
+    margin: 0 2rem;
+}
+
+.movie-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}

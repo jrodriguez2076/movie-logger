@@ -24,13 +24,12 @@
 }
 
 img {
-  height: 100%; //so that it takes up full space
   max-height: 256px !important; // this prevents the image from being extremely big
   object-fit: cover;
   object-position: center; /* this centers and crops the image so that it doesn't break the aspect ratio */
   min-width: 128px;
   min-height: 128px;
-  width: 100%;
+  width: auto;
   height: auto;
 
 }

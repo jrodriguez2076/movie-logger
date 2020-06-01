@@ -11,13 +11,13 @@
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Discover some shows</h3>
     <div class="movie-card">
         <div *ngFor="let image of imageList">
-            <app-movie-card [imageUrl]="image"></app-movie-card>
+            <app-movie-card [media]="image"></app-movie-card>
         </div>
     </div>
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Latest episodes</h3>
     <div class="movie-card">
         <div *ngFor="let image of imageList">
-            <app-movie-card [imageUrl]="image"></app-movie-card>
+            <app-movie-card [media]="image"></app-movie-card>
         </div>
     </div>
 </div>

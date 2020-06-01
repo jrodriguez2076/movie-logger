@@ -6,7 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
- @Input() imageUrl: String;
+  @Input() media: {
+    image: String,
+    title: String
+  };
   constructor() { }
 
   ngOnInit(): void {
