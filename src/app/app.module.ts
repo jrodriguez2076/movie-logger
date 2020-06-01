@@ -12,7 +12,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MovieCardComponent } from './movie-card/movie-card.component'; 
 import {MatCardModule} from '@angular/material/card';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
-import { MoviesComponent } from './movies/movies.component'; 
+import { MoviesComponent } from './movies/movies.component';
+import { DetailsComponent } from './details/details.component'; 
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MoviesComponent } from './movies/movies.component';
     ContentComponent,
     MovieCardComponent,
     TvShowsComponent,
-    MoviesComponent
+    MoviesComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
