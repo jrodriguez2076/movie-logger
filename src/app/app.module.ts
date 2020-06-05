@@ -14,6 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { MoviesComponent } from './movies/movies.component';
 import { DetailsComponent } from './details/details.component'; 
+import { HttpClientModule }    from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DetailsComponent } from './details/details.component';
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

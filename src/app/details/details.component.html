@@ -3,26 +3,62 @@
         <h1 class="content-title mat-display-2">Details</h1>
     </header>
     <div class="details-section">
-        <img class="movie-image" src="../../assets/images/test/poster01.jpg">
-        <div class="movie-info">
-            <p class=" mat-display-1"> The Invisible Man</p>
-            <hr/>
-            <p class=" mat-h1"> 2019</p>
-            <p class="mat-body-1"> Horror / Thriller</p>
-            <p class="mat-body-1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa
-                qui officia deserunt mollit anim id est laborum.</p>
-            <p class="mat-body-1"> <strong>Rating: </strong> 4/5</p>
+        <div class="poster">
+            <img class="movie-image" src="../../assets/images/test/poster01.jpg">
         </div>
-        <div class="similar-section">
-            <p>Similar Movies </p>
-            <img style="max-width: 128px;" src="../../assets/images/test/poster02.jpg">
-            <img style="max-width: 128px;" src="../../assets/images/test/poster02.jpg">
+        <div class="movie-info">
+            <p class=" mat-display-1"> {{details?.name}}</p>
+            <hr />
+            <div class="description">
+                <div class="data-section">
+                    <div class="data-text">
+                        <p class=" mat-h1">
+                            {{details?.releaseDate}}
+                            <!-- {{details.releaseDate.getDate()}}/{{details.releaseDate.getMonth()+1}}/{{details.releaseDate.getFullYear()}} -->
+                        </p>
+                        <p class="mat-body-1"> {{details?.genre}}</p>
+                        <p class="mat-body-1">{{details?.synopsis}}</p>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-item">
+                            <img src="../../assets/images/Ratings/{{details?.rated}}.svg"
+                                style="width: 3rem; margin-bottom: 0.5rem;">
+                            <p style="margin-bottom: 0;">{{ratedText}}</p>
+                        </div>
+                        <div class="rating-item">
+                            <img src="../../assets/images/IMDb_logo.svg" style="width: 3rem;">
+                            <p style="margin-bottom: 0;">{{details?.rating.imdb}}/10</p>
+                        </div>
+                        <div class="rating-item">
+                            <img src="../../assets/images/Rotten_Tomatoes.svg" style="width: 3rem;">
+                            <p style="margin-bottom: 0;">{{details?.rating.rotten}}/100</p>
+                        </div>
+                        <div class="rating-item">
+                            <img src="../../assets/images/Metacritic_logo.svg" style="width: 3rem;">
+                            <p style="margin-bottom: 0;">{{details?.rating.metacritic}}/100</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="credits-section">
+                    <p class=" mat-h1"> Cast & Crew</p>
+                    <hr style="width: 50%;" />
+                    <p class=" mat-h4" style="margin-top: 1rem; font-weight: bold"> Starring </p>
+                    <div *ngIf="details?.cast.length > 0">
+                        <div *ngFor="let actor of details.cast">
+                            <p>{{actor.name}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="details?.cast.length > 0">
+                        <div *ngFor="let staff of details.crew">
+                            <p class=" mat-h4" style="margin-top: 1rem; font-weight: bold"> <strong>{{staff.role}}
+                                </strong>
+                            </p>
+                            <p>{{staff.name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
