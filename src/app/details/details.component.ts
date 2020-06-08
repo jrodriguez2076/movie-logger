@@ -23,24 +23,22 @@ export class DetailsComponent implements OnInit {
     this.details$ = this.detailsService.getMediaDetails();
 
     this.details$.subscribe((resp) => {
-      console.log(ratingEnum[resp.Rated])
-      console.log(resp)
-      this.details = this.formatMediaDetails(resp,0);
+      this.details = this.formatMediaDetails(resp, 0);
       switch(this.details.rated) {
         case(ratingEnum.G):
-          this.ratedText = "General Audiences";
+          this.ratedText = 'General Audiences';
           break;
         case(ratingEnum.PG):
-          this.ratedText = "Parental Guidance Suggested";
+          this.ratedText = 'Parental Guidance Suggested';
           break;
         case(ratingEnum.PG13):
-          this.ratedText = "Parental Guidance Cautioned";
+          this.ratedText = 'Parental Guidance Cautioned';
           break;
         case(ratingEnum.R):
-          this.ratedText = "Restricted";
+          this.ratedText = 'Restricted';
           break;
         case(ratingEnum.NC17):
-          this.ratedText = "Adults Only";
+          this.ratedText = 'Adults Only';
           break;
       }
     });
@@ -49,7 +47,7 @@ export class DetailsComponent implements OnInit {
 
   formatMediaDetails(data,api): media {
     let mediaDetails: media;
-    if (api== 0) {
+    if (api === 0) {
       mediaDetails = {
         name: data.Title,
         releaseDate: data.Released,

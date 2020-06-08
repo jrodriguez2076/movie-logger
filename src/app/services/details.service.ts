@@ -69,12 +69,8 @@ export class DetailsService {
         return this.http.get(omdbApiUrl)
     }
 
-    // gethardDetails():media {
-    //     return this.details
-    // }
-
     getMediaPoster(): string {
-        //TMDB API - getImages
+        // TMDB API - getImages
         return "placeholder poster";
     }
 
@@ -90,5 +86,7 @@ export class DetailsService {
         return filmWorkerList;
     }
 
-
+    getMediaImage(url) {
+        console.log(url)
+    }
 }
