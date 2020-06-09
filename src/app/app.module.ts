@@ -15,6 +15,7 @@ import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { MoviesComponent } from './movies/movies.component';
 import { DetailsComponent } from './details/details.component'; 
 import { HttpClientModule }    from '@angular/common/http';
+import { SimplebarAngularModule } from 'simplebar-angular';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpClientModule }    from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    SimplebarAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]

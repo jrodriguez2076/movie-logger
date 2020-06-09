@@ -9,27 +9,32 @@
         </mat-form-field>
     </div>
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Recommended Movies</h3>
+
+    <!-- <div class="movie-card"> -->
+    <ngx-simplebar>
+        <div *ngFor="let media of movieList">
+            <app-movie-card [media]="media"></app-movie-card>
+        </div>
+    </ngx-simplebar>
+    <!-- </div> -->
+    <!-- <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Recently Watched</h3>
     <div class="movie-card">
         <div *ngFor="let image of imageList">
             <app-movie-card [media]="image"></app-movie-card>
         </div>
-    </div>
-    <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Recently Watched</h3>
-    <div class="movie-card">
-        <div *ngFor="let image of imageList">
-            <app-movie-card [media]="image"></app-movie-card>
-        </div>
-    </div>
+    </div> -->
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Upcoming Movies</h3>
-    <div class="movie-card">
-        <div *ngFor="let image of imageList">
-            <app-movie-card [media]="image"></app-movie-card>
-        </div>
-    </div>
+    <ngx-simplebar>
+        <!-- <div class="movie-card"> -->
+            <div *ngFor="let media of upcomingList">
+                <app-movie-card [media]="media"></app-movie-card>
+            </div>
+        <!-- </div> -->
+    </ngx-simplebar>
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Upcoming YIFY Movies</h3>
-    <div class="movie-card">
-        <div *ngFor="let image of imageList">
-            <app-movie-card [media]="image"></app-movie-card>
+        <div class="movie-card">
+            <div *ngFor="let media of upcomingYifyList">
+                <app-movie-card [media]="media"></app-movie-card>
+            </div>
         </div>
-    </div>
 </div>

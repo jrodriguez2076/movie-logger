@@ -44,13 +44,13 @@
                     <p class=" mat-h1"> Cast & Crew</p>
                     <hr style="width: 50%;" />
                     <p class=" mat-h4" style="margin-top: 1rem; font-weight: bold"> Starring </p>
-                    <div *ngIf="details?.cast.length > 0">
-                        <div *ngFor="let actor of details.cast">
-                            <p>{{actor.name}}</p>
+                    <div *ngIf="Cast?.length > 0">
+                        <div *ngFor="let actor of Cast">
+                            <span>{{actor.name}}, </span>
                         </div>
                     </div>
-                    <div *ngIf="details?.cast.length > 0">
-                        <div *ngFor="let staff of details.crew">
+                    <div *ngIf="Crew?.length > 0">
+                        <div *ngFor="let staff of Crew">
                             <p class=" mat-h4" style="margin-top: 1rem; font-weight: bold"> <strong>{{staff.role}}
                                 </strong>
                             </p>

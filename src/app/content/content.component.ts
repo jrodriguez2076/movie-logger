@@ -6,11 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-
+  mediaId : string;
+  
   constructor() { }
 
   ngOnInit(): void {
-    
+    this.mediaId = "tt1051906";
   }
 
   

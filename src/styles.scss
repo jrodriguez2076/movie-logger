@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/purple-green.css';
+@import '~simplebar/dist/simplebar.css';
 
 // html, body { height: 100%; }
 body { margin: 0; font-weight: 200; font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif; }
@@ -11,4 +12,20 @@ html, body {
 app-root {
   display: block;
   height: 100vh;
+}
+
+.simplebar-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.simplebar-visible::before {
+  background-color: #7b1fa2 !important;
+  -webkit-transition: opacity .5 linear;
+  transition: opacity .5 linear;
+}
+
+.simplebar-scrollbar {
+  height: 2rem;
 }
