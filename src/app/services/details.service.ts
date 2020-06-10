@@ -20,6 +20,7 @@ export class DetailsService {
     constructor(private http: HttpClient){}
 
     getMediaDetails(imdbId): Observable<any> {
+        console.log("FROM SERVICE: ",imdbId)
         let omdbApiUrl = `${this.detailsUrl}?apikey=${this.omdbApiKey}&i=${imdbId}`;
         return this.http.get(omdbApiUrl)
     }
@@ -34,4 +35,12 @@ export class DetailsService {
         return this.http.get(findbyImdbIdUrl)
     }
 
+    funcTest(id): void {
+        console.log(id)
+    }
+
+    getExternalId(id, mediaType): Observable<any> {
+        let findExternalUrl = `${this.tmdbUrl}${mediaType}/${id}/external_ids?api_key=${this.tmdbApiKey}&external_source=imdb_id`;
+        return this.http.get(findExternalUrl);
+    }
 }

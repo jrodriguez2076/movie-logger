@@ -11,7 +11,9 @@ mat-toolbar {
   }
 
 .nav-link {
-    margin: 0 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
 }
 
 .mat-elevation-z4 {
@@ -41,4 +43,9 @@ mat-toolbar {
     display: flex;
     align-content: center;
     justify-content: center;
+}
+
+.active {
+    background-color: rgb(82, 22, 119)   ;
+    height: auto
 }

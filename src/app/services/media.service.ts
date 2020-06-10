@@ -16,19 +16,29 @@ export class MediaService {
 
     constructor(private http: HttpClient){}
 
-    getRecommendedMovies(): Observable<any> {
-        let  recommendedUrl= `${this.tmdbUrl}movie/popular?api_key=${this.tmdbApiKey}&i=tt1051906`;
+    getRecommendedMedia(mediaType): Observable<any> {
+        let  recommendedUrl= `${this.tmdbUrl}${mediaType}/popular?api_key=${this.tmdbApiKey}`;
         return this.http.get(recommendedUrl)
     }
 
-    getUpcomingMovies(): Observable<any> {
-        let  upcomingUrl= `${this.tmdbUrl}movie/upcoming?api_key=${this.tmdbApiKey}&i=tt1051906`;
+    getUpcomingMedia(mediaType): Observable<any> {
+        let  upcomingUrl= `${this.tmdbUrl}${mediaType}/upcoming?api_key=${this.tmdbApiKey}`;
         return this.http.get(upcomingUrl)
+    }
+
+    getCurrentMedia(mediaType): Observable<any> {
+        let  currentUrl= `${this.tmdbUrl}${mediaType}/airing_today?api_key=${this.tmdbApiKey}&language=en-US&page=1`;
+        return this.http.get(currentUrl)
     }
 
     getUpcomingYifyMovies(): Observable<any> {
         let ytsUrl = 'https://yts.mx/';
         return this.http.get(ytsUrl,{responseType: 'text'})
+    }
+
+    searchMedia(query, mediaType): Observable<any> {
+        let searchUrl = `${this.tmdbUrl}search/${mediaType}?api_key=${this.tmdbApiKey}&language=en-US&page=1&include_adult=true&query=${query}`;
+        return this.http.get(searchUrl);
     }
 
 }

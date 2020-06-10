@@ -6,6 +6,8 @@ import { mediaTypeEnum } from '../models/enums/mediaTypeEnum';
 import { filmWorker } from '../models/entities/filmWorkerEntity';
 import { DetailsService } from '../services/details.service';
 import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -14,22 +16,34 @@ import { Observable } from 'rxjs';
   providers: [DetailsService]
 })
 export class DetailsComponent implements OnInit {
-  @Input() mediaId: string;
+  mediaType: string;
+  externalId: string;
   details: media;
   details$: Observable<any>;
   filmWorkers$: Observable<any>;
   internalId: string;
   internalId$: Observable<any>;
+  externalId$: Observable<any>;
   ratedText: string;
   Cast: filmWorker[];
   Crew: filmWorker[];
-  constructor(private detailsService: DetailsService) { }
+
+  constructor(private detailsService: DetailsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.details$ = this.detailsService.getMediaDetails(this.mediaId);
-    this.internalId$ = this.detailsService.getInternalId(this.mediaId);
+    this.mediaType = this.route.snapshot.params['type'];
+    this.internalId = this.route.snapshot.params['id'];
+    console.log(`${this.mediaType}, ${this.internalId}`)
 
-    this.details$.subscribe((resp) => {
+    // this.internalId$ = this.detailsService.getInternalId(this.externalId);
+    this.externalId$ = this.detailsService.getExternalId(this.internalId,this.mediaType);
+    this.details$ = this.detailsService.getMediaDetails(this.externalId);
+    this.filmWorkers$ = this.detailsService.getFilmWorkers(this.internalId);
+
+    this.externalId$.pipe(
+      switchMap(externalId => this.detailsService.getMediaDetails(externalId.imdb_id))
+    )
+    .subscribe(resp => {
       this.details = this.formatMediaDetails(resp, 0);
       switch (this.details.rated) {
         case (ratingEnum.G):
@@ -47,17 +61,17 @@ export class DetailsComponent implements OnInit {
         case (ratingEnum.NC17):
           this.ratedText = 'Adults Only';
           break;
+        default:
+          this.ratedText = 'Rating not Found';
+          break;
       }
-    });
-
-    this.internalId$.subscribe((resp) => {
-      this.internalId = resp["movie_results"][0]["id"]
-      this.filmWorkers$ = this.detailsService.getFilmWorkers(this.internalId);
-      this.filmWorkers$.subscribe((resp) => {
-        this.Cast = this.formatWorker(resp["cast"],4, true);
-        this.Crew = this.formatWorker(resp["crew"],4, false);
-      })
     })
+
+    this.filmWorkers$.subscribe((resp) => {
+          this.Cast = this.formatWorker(resp["cast"],4, true);
+          this.Crew = this.formatWorker(resp["crew"],4, false);
+        })
+
   }
 
   formatWorker(data, count: number, isCast: Boolean): filmWorker[] {
@@ -71,22 +85,12 @@ export class DetailsComponent implements OnInit {
     }
     return Cast
   }
-  
-  // formatCrew(data, count): filmWorker[] {
-  //   let crew: filmWorker[];
-  //   for (let i = 0; i < count; i++) {
-  //     Cast.push({
-  //       name: data["cast"][i]['name'],
-  //       character: data["cast"][i]['character'],
-  //       role: "actor"
-  //     })
-  //   }
-  //   return Cast
-  // }
 
 
   formatMediaDetails(data, api): media {
+    console.log(data)
     let mediaDetails: media;
+    
     if (api === 0) {
       mediaDetails = {
         name: data.Title,
@@ -94,7 +98,9 @@ export class DetailsComponent implements OnInit {
         genre: data.Genre,
         synopsis: data.Plot,
         rated: parseInt(ratingEnum[data.Rated]),
-        rating: { imdb: data.imdbRating, rotten: "", metacritic: data.Metascore },
+        rating: data.Ratings.length === 3 
+          ? { imdb: data.imdbRating, rotten: data.Ratings[1].Value, metacritic: data.Metascore }
+          : { imdb: data.imdbRating, rotten: "N/A/100", metacritic: data.Metascore } ,
         imdbId: data.imdbID,
         runtime: data.Runtime,
         type: parseInt(mediaTypeEnum[data.Type]),

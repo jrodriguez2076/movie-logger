@@ -16,6 +16,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { DetailsComponent } from './details/details.component'; 
 import { HttpClientModule }    from '@angular/common/http';
 import { SimplebarAngularModule } from 'simplebar-angular';
+import { AppRoutingModule } from './app-routing.module';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { SimplebarAngularModule } from 'simplebar-angular';
     MovieCardComponent,
     TvShowsComponent,
     MoviesComponent,
-    DetailsComponent
+    DetailsComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { SimplebarAngularModule } from 'simplebar-angular';
     MatInputModule,
     MatCardModule,
     HttpClientModule,
-    SimplebarAngularModule
+    SimplebarAngularModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

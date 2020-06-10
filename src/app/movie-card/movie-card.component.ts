@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
@@ -8,12 +9,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MovieCardComponent implements OnInit {
   @Input() media: {
     image: String,
-    title: String
+    title: String,
+    id: String,
+    type: String
   };
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
+  }
+
+  posterClicked(event) {
+    let redirectUrl = `${this.media.type}/${event.target.id}`
+    this.router.navigate([redirectUrl])
   }
 
 }

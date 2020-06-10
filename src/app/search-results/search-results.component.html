@@ -1,6 +1,6 @@
 <div class="movie-section">
     <header class="component-page-header">
-        <h1 class="content-title mat-display-2">TV Shows</h1>
+        <h1 class="content-title mat-display-2">Search results for: {{query}}</h1>
     </header>
     <div class="search-bar">
         <mat-form-field appearance="fill" style="width: 80%;">
@@ -8,16 +8,17 @@
             <input matInput>
         </mat-form-field>
     </div>
-    <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Discover some shows</h3>
+    <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Results</h3>
     <div class="movie-card">
-        <div *ngFor="let media of tvShowList">
+        <div *ngFor="let media of searchResults">
             <app-movie-card [media]="media"></app-movie-card>
         </div>
     </div>
+    <!-- 
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Airing today</h3>
     <div class="movie-card">
         <div *ngFor="let media of latestList">
             <app-movie-card [media]="media"></app-movie-card>
         </div>
-    </div>
+    </div> -->
 </div>

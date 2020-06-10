@@ -20,7 +20,7 @@ export class MoviesComponent implements OnInit {
   upcomingList$: Observable<any>;
   upcomingYifyList$: Observable<any>;
   options: Object = {
-    content: 'pepito',
+    content: 'simplebar-content',
     scrollContent: 'simplebar-scroll-content',
     scrollbar: 'simplebar-scrollbar',
     track: 'simplebar-track'
@@ -33,29 +33,25 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     
 
-    this.movieList$ = this.mediaService.getRecommendedMovies();
+    this.movieList$ = this.mediaService.getRecommendedMedia('movie');
     this.movieList$.subscribe((resp) => {
       this.movieList = this.formatMediaInfo(resp.results);
     })
 
-    this.upcomingList$ = this.mediaService.getUpcomingMovies();
+    this.upcomingList$ = this.mediaService.getUpcomingMedia('movie');
     this.upcomingList$.subscribe((resp) => {
       this.upcomingList = this.formatMediaInfo(resp.results);
     })
 
     this.upcomingYifyList$ = this.mediaService.getUpcomingYifyMovies();
     this.upcomingYifyList$.subscribe((resp: Response) => {
-      let data = resp;
+      let extractedMovies = []
       let parser = new DOMParser();
-      let doc = parser.parseFromString(data.toString(), "text/html");
+      let doc = parser.parseFromString(resp.toString(), "text/html");
       let upcomingHTML = doc.body.querySelectorAll(".home-movies")[1];
       let upcomingImages = upcomingHTML.querySelectorAll("img");
-      let extractedMovies = []
-
       for (let i = 0; i < upcomingImages.length; i++) {
-        // let trimmedSrc = "/assets/images/movies/once_upon_a_time_in_hollywood_2019/medium-cover.jpg".split("/")
         let trimmedSrc = upcomingImages[i].getAttribute('src').split('/');
-
         trimmedSrc.splice(0, 0, "https://img.yts.mx")
         extractedMovies.push({
           image: trimmedSrc.join("/"),
@@ -63,10 +59,7 @@ export class MoviesComponent implements OnInit {
         })
 
       }
-      this.upcomingYifyList = extractedMovies
-      console.log(this.upcomingYifyList)
-
-
+      this.upcomingYifyList = extractedMovies;
     })
   }
 
@@ -75,9 +68,10 @@ export class MoviesComponent implements OnInit {
     const imageSize = 'w300';
     mediaResults.forEach(element => {
       formattedMedia.push({
-        image: `${this.imageUrl}${imageSize}${element.poster_path}`,
+        image: element.poster_path != null? `${this.imageUrl}${imageSize}${element.poster_path}`: 'http://placehold.jp/0d0d0d/a22cd1/300x450.png?text=Poster%20Not%20Available',
         title: element.title,
         id: element.id,
+        type: "movie"
       })
     });
     return formattedMedia
