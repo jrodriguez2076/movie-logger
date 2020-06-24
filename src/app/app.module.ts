@@ -20,6 +20,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchSectionComponent } from './search-section/search-section.component';
 import {MatSelectModule} from '@angular/material/select'; 
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button'; 
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     SimplebarAngularModule,
     AppRoutingModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

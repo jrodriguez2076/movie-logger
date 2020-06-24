@@ -9,7 +9,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 const appRoutes: Routes = [
     { path: 'movie', component: MoviesComponent },
     { path: 'tv', component: TvShowsComponent },
-    { path: ':type/search', component: SearchResultsComponent },
+    { path: 'search', component: SearchResultsComponent },
     { path: ':type/:id', component: DetailsComponent },
     { path: '',   redirectTo: '/movie', pathMatch: 'full' }
   ] 

@@ -1,19 +1,30 @@
 <div class="search-bar">
     <!-- <span class="btn btn-primary"><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></span> -->
     <!-- <span class="material-icons">face</span> -->
-    <mat-form-field appearance="fill" style="width: auto;">
-        <mat-label>Select type</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let type of types" style="text-align: center;">
-                <div>
-                    <span class="material-icons" style="vertical-align: middle; margin-right: 0.5rem;">{{type.icon}}</span>
-                    <span>{{type.type}}</span>
-                </div>
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill" style="width: 80%;">
-        <mat-label>Search for a movie or Tv show!</mat-label>
-        <input matInput>
-    </mat-form-field>
+    <form [formGroup]="searchFormGroup" (ngSubmit)="startSearch()" style=" display: flex; flex-direction: row; width: 80%">
+        <mat-form-field appearance="fill" style="width: auto;">
+            <mat-label>Select type</mat-label>
+            <mat-select formControlName="type">
+                <mat-select-trigger>
+                    <span class="material-icons"
+                        style="vertical-align: middle; margin-right: 0.5rem; font-size: 14px;">{{searchFormGroup.controls['type'].value.icon}}</span>
+                    {{searchFormGroup.controls['type'].value.value}}
+                </mat-select-trigger>
+                <mat-option [value]="type" *ngFor="let type of types" style="text-align: center;">
+                    <div>
+                        <span class="material-icons"
+                            style="vertical-align: middle; margin-right: 0.5rem;">{{type.icon}}</span>
+                        <span>{{mediaTypes[type.type]}}</span>
+                    </div>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 80%;">
+            <mat-label>Search for a movie or Tv show!</mat-label>
+            <input matInput formControlName="searchQuery">
+        </mat-form-field>
+        <button mat-flat-button color="primary" style="height: 75%;">
+            <mat-icon>search</mat-icon>
+        </button>
+    </form>
 </div>
