@@ -18,6 +18,8 @@ import { HttpClientModule }    from '@angular/common/http';
 import { SimplebarAngularModule } from 'simplebar-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchSectionComponent } from './search-section/search-section.component';
+import {MatSelectModule} from '@angular/material/select'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     TvShowsComponent,
     MoviesComponent,
     DetailsComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    SearchSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     MatCardModule,
     HttpClientModule,
     SimplebarAngularModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
