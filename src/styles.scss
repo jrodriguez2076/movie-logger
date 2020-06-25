@@ -36,5 +36,6 @@ app-root {
 
 app-content {
   display: block;
-  height: 100%
+  height: max-content;
+  min-height: 100%;
 }

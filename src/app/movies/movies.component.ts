@@ -3,6 +3,8 @@ import { media } from '../models/entities/mediaEntity';
 import { Observable } from 'rxjs';
 import { MediaService } from '../services/media.service';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-movies',
@@ -28,10 +30,9 @@ export class MoviesComponent implements OnInit {
 
   imageList: Object[]
 
-  constructor(private mediaService: MediaService) { }
+  constructor(private mediaService: MediaService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    
 
     this.movieList$ = this.mediaService.getRecommendedMedia('movie');
     this.movieList$.subscribe((resp) => {
@@ -57,10 +58,11 @@ export class MoviesComponent implements OnInit {
           image: trimmedSrc.join("/"),
           title: upcomingImages[i].getAttribute('alt')
         })
-
+        this.spinner.hide();
       }
       this.upcomingYifyList = extractedMovies;
     })
+    this.spinner.show();
   }
 
   formatMediaInfo(mediaResults): any[] {
@@ -68,7 +70,7 @@ export class MoviesComponent implements OnInit {
     const imageSize = 'w300';
     mediaResults.forEach(element => {
       formattedMedia.push({
-        image: element.poster_path != null? `${this.imageUrl}${imageSize}${element.poster_path}`: 'http://placehold.jp/0d0d0d/a22cd1/300x450.png?text=Poster%20Not%20Available',
+        image: element.poster_path != null ? `${this.imageUrl}${imageSize}${element.poster_path}` : 'http://placehold.jp/0d0d0d/a22cd1/300x450.png?text=Poster%20Not%20Available',
         title: element.title,
         id: element.id,
         type: "movie"

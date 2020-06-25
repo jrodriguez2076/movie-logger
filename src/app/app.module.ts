@@ -23,6 +23,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button'; 
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSelectModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

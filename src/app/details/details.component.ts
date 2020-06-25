@@ -8,6 +8,7 @@ import { DetailsService } from '../services/details.service';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-details',
@@ -28,14 +29,11 @@ export class DetailsComponent implements OnInit {
   Cast: filmWorker[];
   Crew: filmWorker[];
 
-  constructor(private detailsService: DetailsService, private route: ActivatedRoute) { }
+  constructor(private detailsService: DetailsService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.mediaType = this.route.snapshot.params['type'];
     this.internalId = this.route.snapshot.params['id'];
-    console.log(`${this.mediaType}, ${this.internalId}`)
-
-    // this.internalId$ = this.detailsService.getInternalId(this.externalId);
     this.externalId$ = this.detailsService.getExternalId(this.internalId,this.mediaType);
     this.details$ = this.detailsService.getMediaDetails(this.externalId);
     this.filmWorkers$ = this.detailsService.getFilmWorkers(this.internalId);
@@ -65,13 +63,14 @@ export class DetailsComponent implements OnInit {
           this.ratedText = 'Rating not Found';
           break;
       }
+      this.spinner.hide();
     })
 
     this.filmWorkers$.subscribe((resp) => {
           this.Cast = this.formatWorker(resp["cast"],4, true);
           this.Crew = this.formatWorker(resp["crew"],4, false);
         })
-
+    this.spinner.show();
   }
 
   formatWorker(data, count: number, isCast: Boolean): filmWorker[] {
