@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { media } from '../models/entities/mediaEntity';
 import { Observable } from 'rxjs';
 import { MediaService } from '../services/media.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-tv-shows',
@@ -25,9 +26,10 @@ export class TvShowsComponent implements OnInit {
     track: 'simplebar-track'
   };
 
-  constructor(private mediaService: MediaService) { }
+  constructor(private mediaService: MediaService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.tvShowList$ = this.mediaService.getRecommendedMedia('tv');
     this.tvShowList$.subscribe((resp) => {
       this.tvShowList = this.formatMediaInfo(resp.results);
@@ -36,6 +38,7 @@ export class TvShowsComponent implements OnInit {
     this.latestList$ = this.mediaService.getCurrentMedia('tv');
     this.latestList$.subscribe((resp)=>{
       this.latestList = this.formatMediaInfo(resp.results);
+    this.spinner.hide();
     })
   }
 
