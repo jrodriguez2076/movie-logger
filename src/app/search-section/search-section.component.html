@@ -2,7 +2,7 @@
     <!-- <span class="btn btn-primary"><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></span> -->
     <!-- <span class="material-icons">face</span> -->
     <form [formGroup]="searchFormGroup" (ngSubmit)="startSearch()" style=" display: flex; flex-direction: row; width: 80%">
-        <mat-form-field appearance="fill" style="width: auto;">
+        <mat-form-field appearance="fill" style="width: auto; margin-right: 0.1rem;">
             <mat-label>Select type</mat-label>
             <mat-select formControlName="type">
                 <mat-select-trigger>
@@ -19,7 +19,7 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="fill" style="width: 80%;">
+        <mat-form-field appearance="fill" style="width: 80%; margin-right: 0.1rem;">
             <mat-label>Search for a movie or Tv show!</mat-label>
             <input matInput formControlName="searchQuery">
         </mat-form-field>

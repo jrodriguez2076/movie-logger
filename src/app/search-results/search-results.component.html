@@ -4,16 +4,15 @@
     </header>
     <app-search-section></app-search-section>
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Results</h3>
-    <div class="movie-card">
-        <div *ngFor="let media of searchResults">
-            <app-movie-card [media]="media"></app-movie-card>
-        </div>
+    <div class="movie-card" *ngIf="searchResults?.length > 0 else noResults">
+            <div *ngFor="let media of searchResults">
+                <app-movie-card [media]="media"></app-movie-card>
+            </div>
     </div>
-    <!-- 
-    <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Airing today</h3>
-    <div class="movie-card">
-        <div *ngFor="let media of latestList">
-            <app-movie-card [media]="media"></app-movie-card>
+    <ng-template #noResults>
+        <div class="mat-h2" style="text-align: center;">
+            No results found
         </div>
-    </div> -->
+
+    </ng-template>
 </div>

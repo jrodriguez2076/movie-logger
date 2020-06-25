@@ -12,7 +12,7 @@ import { ActivatedRoute, Params } from '@angular/router';
   providers: [MediaService]
 })
 export class SearchResultsComponent implements OnInit {
-  imageUrl: string = environment.tmdb_image_url;;
+  imageUrl: string = environment.tmdb_image_url;
   query: string;
   searchResults: media[];
   searchResults$: Observable<any>;
