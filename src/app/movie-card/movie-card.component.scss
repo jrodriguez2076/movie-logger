@@ -17,9 +17,6 @@
 }
 
 .movie-title {
-  // position: absolute;
-  // left: 50%;
-  // top: 50%;
   font-weight: bold;
   text-transform: uppercase;
   text-shadow: darken($color: #000000, $amount: 20);
@@ -59,17 +56,17 @@ img {
 .darken p {
   position: absolute;
   top: 50%;
-  opacity: 0%;
+  opacity: 0;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
 }
 .darken:hover p {
   color: #fff;
-  opacity: 100%;
+  opacity: 1;
+  transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
   -moz-transition: all 0.5s linear;
   -ms-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
-  transition: all 0.5s linear;
 }

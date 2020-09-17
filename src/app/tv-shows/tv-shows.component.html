@@ -5,15 +5,19 @@
     </header>
     <app-search-section></app-search-section>
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Discover some shows</h3>
-    <div class="movie-card">
-        <div *ngFor="let media of tvShowList">
-            <app-movie-card [media]="media"></app-movie-card>
+    <ngx-simplebar>
+        <div class="movie-card">
+            <div *ngFor="let media of tvShowList">
+                <app-movie-card [media]="media"></app-movie-card>
+            </div>
         </div>
-    </div>
+    </ngx-simplebar>
     <h3 class="content-title mat-display-1" style="text-align: center; margin: 2rem 0;">Airing today</h3>
-    <div class="movie-card">
-        <div *ngFor="let media of latestList">
-            <app-movie-card [media]="media"></app-movie-card>
+    <ngx-simplebar>
+        <div class="movie-card">
+            <div *ngFor="let media of latestList">
+                <app-movie-card [media]="media"></app-movie-card>
+            </div>
         </div>
-    </div>
+    </ngx-simplebar>
 </div>

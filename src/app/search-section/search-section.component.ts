@@ -38,9 +38,7 @@ export class SearchSectionComponent implements OnInit {
   }
 
   startSearch() {
-    console.log(this.searchFormGroup)
     this.router.navigate(['/search'], { queryParams: { query: this.searchFormGroup.controls['searchQuery'].value, type: this.searchFormGroup.controls['type'].value.value } })
-    // console.log(this.searchFormGroup.get['type'].value)
   }
 
 }

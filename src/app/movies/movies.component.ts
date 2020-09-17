@@ -42,6 +42,7 @@ export class MoviesComponent implements OnInit {
     this.upcomingList$ = this.mediaService.getUpcomingMedia('movie');
     this.upcomingList$.subscribe((resp) => {
       this.upcomingList = this.formatMediaInfo(resp.results);
+      this.spinner.hide();
     })
 
     this.upcomingYifyList$ = this.mediaService.getUpcomingYifyMovies();
@@ -61,6 +62,9 @@ export class MoviesComponent implements OnInit {
         this.spinner.hide();
       }
       this.upcomingYifyList = extractedMovies;
+    },(error)=>{
+      console.log(error)
+      this.spinner.hide();
     })
     this.spinner.show();
   }

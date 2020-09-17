@@ -87,7 +87,6 @@ export class DetailsComponent implements OnInit {
 
 
   formatMediaDetails(data, api): media {
-    console.log(data)
     let mediaDetails: media;
     
     if (api === 0) {

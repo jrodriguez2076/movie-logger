@@ -27,7 +27,6 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams
       .subscribe(params => {
-        console.log(params);
         this.query = params.query;
         this.mediaType = params.type;
         this.searchResults$ = this.mediaService.searchMedia(this.query, this.mediaType);
